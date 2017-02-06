@@ -5,6 +5,7 @@ use std::error::Error;
 pub mod ast;
 pub mod config;
 pub mod c;
+pub mod vm;
 
 use config::{Config, Operation};
 
@@ -19,6 +20,10 @@ pub fn run(cfg: Config) -> Result<(), Box<Error>> {
     match cfg.operation {
         Operation::PrintAst => println!("{:#?}", ast),
         Operation::TranslateC => c::to_c(&ast),
+        Operation::Execute => {
+            let mut vm = vm::VirtualMachine::new();
+            return vm.execute(&ast);
+        },
     }
 
     Ok(())

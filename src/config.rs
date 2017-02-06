@@ -2,6 +2,7 @@
 pub enum Operation {
     PrintAst,
     TranslateC,
+    Execute,
 }
 
 pub struct Config {
@@ -21,6 +22,7 @@ impl Config {
             match &arg[..] {
                 "--toc" => operation = Operation::TranslateC,
                 "--ast" => operation = Operation::PrintAst,
+                "--exec" => operation = Operation::Execute,
                 _ => path = Some(arg),
             };
         }
