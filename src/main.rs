@@ -3,7 +3,7 @@ extern crate rustbf;
 use std::env;
 use std::process;
 
-use rustbf::Config;
+use rustbf::config::Config;
 
 fn main() {
     let cfg = Config::new(&mut env::args()).unwrap_or_else(|e| {

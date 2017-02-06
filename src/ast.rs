@@ -1,3 +1,5 @@
+use std::slice::Iter;
+
 #[derive(Debug)]
 pub enum Command {
     PtrIncrement,
@@ -61,5 +63,9 @@ impl Ast {
 
     pub fn append(&mut self, cmd: Command) {
         self.0.push(cmd);
+    }
+
+    pub fn iter(&self) -> Iter<Command> {
+        self.0.iter()
     }
 }
